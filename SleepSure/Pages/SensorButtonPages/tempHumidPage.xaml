@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SleepSure.Page.SensorPages.tempHumidPage"
+             Title="Temperature &amp; Humidity"
+             NavigationPage.HasNavigationBar="False">
+
+    <!-- Background -->
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#F0F5F9" Offset="0.0"/>
+            <GradientStop Color="#E1ECF4" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <!-- Content -->
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="20">
+
+                <!-- Header Section -->
+                <Frame Background="{DynamicResource HighlightColorBrush2}" Padding="15" CornerRadius="10">
+                    <VerticalStackLayout>
+                        <Label Text="Temperature &amp; Humidity Monitoring"
+               FontSize="28"
+               FontAttributes="Bold"
+               HorizontalTextAlignment="Center"
+               TextColor="{StaticResource ContentBackgroundColor}" />
+                        <Label Text="Track and manage your environment for optimal comfort"
+               FontSize="16"
+               HorizontalTextAlignment="Center"
+               TextColor="{StaticResource ContentBackgroundColor}" 
+               Margin="0,5,0,0"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+
+                <!-- Real-Time Temperature and Humidity Readings -->
+                <Frame BackgroundColor="{StaticResource ContentBackgroundColor}" Padding="15" CornerRadius="10">
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
+                        <VerticalStackLayout Grid.Column="0" Spacing="5" HorizontalOptions="Center">
+                            <Label Text="Temperature"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource TextColor}" />
+                            <Label Text="22°C"
+                                   FontSize="36"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource SuccessColor}" />
+                            <Label Text="Comfortable Range: 18°C - 24°C"
+                                   FontSize="12"
+                                   TextColor="{StaticResource TextColor}" />
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Grid.Column="1" Spacing="5" HorizontalOptions="Center">
+                            <Label Text="Humidity"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource TextColor}" />
+                            <Label Text="45%"
+                                   FontSize="36"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource SuccessColor}" />
+                            <Label Text="Optimal Range: 30% - 60%"
+                                   FontSize="12"
+                                   TextColor="{StaticResource TextColor}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Frame>
+
+                <!-- Historical Data Chart Preview -->
+                <Frame BackgroundColor="{StaticResource ContentBackgroundColor}" Padding="15" CornerRadius="10">
+                    <VerticalStackLayout>
+                        <Label Text="Historical Data"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextColor}" />
+
+                        <Label Text="Last 24 Hours"
+                               FontSize="14"
+                               FontAttributes="Italic"
+                               TextColor="{StaticResource TextColor}" />
+
+                        <!-- Placeholder for Chart -->
+                        <BoxView HeightRequest="150" BackgroundColor="{StaticResource SecondaryButtonColor}" 
+                                 CornerRadius="10" Margin="0,10,0,0" />
+                        <Label Text="Temperature and humidity trends over time"
+                               FontSize="12"
+                               HorizontalTextAlignment="Center"
+                               TextColor="{StaticResource TextColor}" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Settings & Thresholds Section -->
+                <Frame BackgroundColor="{StaticResource ContentBackgroundColor}" Padding="15" CornerRadius="10">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Settings &amp; Notifications"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource TextColor}" />
+
+                        <!-- Temperature Threshold -->
+                        <Grid ColumnDefinitions="Auto,Auto" VerticalOptions="Center">
+                            <Label Text="Temperature Threshold"
+                                   FontSize="16"
+                                   TextColor="{StaticResource TextColor}"
+                                   VerticalOptions="Center" Grid.Column="0"/>
+                            <Slider Minimum="15" Maximum="30" Value="22" Grid.Column="1"
+                                    VerticalOptions="Center" WidthRequest="200" />
+                        </Grid>
+                        <Label Text="Set an alert if temperature exceeds the threshold."
+                               FontSize="12"
+                               TextColor="{StaticResource TextColor}" />
+
+                        <!-- Humidity Threshold -->
+                        <Grid ColumnDefinitions="Auto,Auto" VerticalOptions="Center">
+                            <Label Text="Humidity Threshold"
+                                   FontSize="16"
+                                   TextColor="{StaticResource TextColor}"
+                                   VerticalOptions="Center" Grid.Column="0"/>
+                            <Slider Minimum="20" Maximum="80" Value="45" Grid.Column="1"
+                                    VerticalOptions="Center" WidthRequest="200" />
+                        </Grid>
+                        <Label Text="Set an alert if humidity exceeds the threshold."
+                               FontSize="12"
+                               TextColor="{StaticResource TextColor}" />
+
+                        <!-- Notification Toggle -->
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Enable Notifications"
+                                   FontSize="16"
+                                   TextColor="{StaticResource TextColor}"
+                                   VerticalOptions="Center"
+                                   Grid.Column="0" />
+                            <Switch IsToggled="True"
+                                    VerticalOptions="Center"
+                                    Grid.Column="1"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

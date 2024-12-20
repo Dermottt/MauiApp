@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SleepSure.Page.MainPage"
+             NavigationPage.HasNavigationBar="False">
+    
+    
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#F0F5F9" Offset="0.1" />
+            <GradientStop Color="#E1ECF4" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <!-- Welcome Section with Gradient -->
+            <Frame CornerRadius="10" Padding="15" Margin="0,0,0,15">
+                <Frame.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#8ED081" Offset="0.1" />
+                        <GradientStop Color="#3A506B" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Frame.Background>
+                <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+                    <Label Text="Welcome to SleepSure"
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"/>
+
+                    <Label Text="Your trusted partner in achieving better sleep and monitoring restful nights."
+                           FontSize="16"
+                           HorizontalTextAlignment="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Alarm Configuration Section -->
+            <Frame BackgroundColor="{StaticResource BackgroundColor}" Padding="15" CornerRadius="10" Margin="0,0,0,15">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Alarm Configuration"
+                           FontSize="22"
+                           FontAttributes="Bold" 
+                           TextColor="{StaticResource PrimaryColor}" />
+
+                    <!-- Alarm Item Template -->
+                    <VerticalStackLayout Spacing="10">
+                        <!-- Motion Sensors -->
+                        <Frame BackgroundColor="{StaticResource SecondaryBackgroundColor}" Padding="10" CornerRadius="8">
+                            <Grid ColumnDefinitions="Auto,*,Auto,Auto" VerticalOptions="CenterAndExpand" Padding="10">
+                                <Image Source="motion_icon.png" HeightRequest="30" WidthRequest="30" Grid.Column="0" />
+                                <Label Text="Motion Sensors" FontSize="18" VerticalOptions="Center" Grid.Column="1" />
+                                <Switch x:Name="MotionAlarmSwitch" Grid.Column="2" HorizontalOptions="End" />
+                                <Button Text="Configure" WidthRequest="90" Clicked="OnConfigureMotion" 
+                                        BackgroundColor="{StaticResource ButtonColor}"
+                                        TextColor="White"
+                                        CornerRadius="8" Padding="5" Grid.Column="3" />
+                            </Grid>
+                        </Frame>
+
+                        <!-- Cameras -->
+                        <Frame BackgroundColor="{StaticResource SecondaryBackgroundColor}" Padding="10" CornerRadius="8">
+                            <Grid ColumnDefinitions="Auto,*,Auto,Auto" VerticalOptions="CenterAndExpand" Padding="10">
+                                <Image Source="camera_icon.png" HeightRequest="30" WidthRequest="30" Grid.Column="0" />
+                                <Label Text="Cameras" FontSize="18" VerticalOptions="Center" Grid.Column="1" />
+                                <Switch x:Name="CameraAlarmSwitch" Grid.Column="2" HorizontalOptions="End" />
+                                <Button Text="Configure" WidthRequest="90" Clicked="OnConfigureCamera" 
+                                        BackgroundColor="{StaticResource ButtonColor}"
+                                        TextColor="White"
+                                        CornerRadius="8" Padding="5" Grid.Column="3" />
+                            </Grid>
+                        </Frame>
+
+                        <!-- Door and Window Sensors -->
+                        <Frame BackgroundColor="{StaticResource SecondaryBackgroundColor}" Padding="10" CornerRadius="8">
+                            <Grid ColumnDefinitions="Auto,*,Auto,Auto" VerticalOptions="CenterAndExpand" Padding="10">
+                                <Image Source="door_icon.png" HeightRequest="30" WidthRequest="30" Grid.Column="0" />
+                                <Label Text="Door and Window Sensors" FontSize="18" VerticalOptions="Center" Grid.Column="1" />
+                                <Switch x:Name="DoorWindowAlarmSwitch" Grid.Column="2" HorizontalOptions="End" />
+                                <Button Text="Configure" WidthRequest="90" Clicked="OnConfigureDoorWindow" 
+                                        BackgroundColor="{StaticResource ButtonColor}"
+                                        TextColor="White"
+                                        CornerRadius="8" Padding="5" Grid.Column="3" />
+                            </Grid>
+                        </Frame>
+
+                        <!-- Temperature and Humidity Sensors -->
+                        <Frame BackgroundColor="{StaticResource SecondaryBackgroundColor}" Padding="10" CornerRadius="8">
+                            <Grid ColumnDefinitions="Auto,*,Auto,Auto" VerticalOptions="CenterAndExpand" Padding="10">
+                                <Image Source="temperature_icon.png" HeightRequest="30" WidthRequest="30" Grid.Column="0" />
+                                <Label Text="Temperature and Humidity Sensors" FontSize="18" VerticalOptions="Center" Grid.Column="1" />
+                                <Switch x:Name="TempHumidAlarmSwitch" Grid.Column="2" HorizontalOptions="End" />
+                                <Button Text="Configure" WidthRequest="90" Clicked="OnConfigureTempHumid" 
+                                        BackgroundColor="{StaticResource ButtonColor}"
+                                        TextColor="White"
+                                        CornerRadius="8" Padding="5" Grid.Column="3" />
+                            </Grid>
+                        </Frame>
+
+                        <!-- Vibration Sensors -->
+                        <Frame BackgroundColor="{StaticResource SecondaryBackgroundColor}" Padding="10" CornerRadius="8">
+                            <Grid ColumnDefinitions="Auto,*,Auto,Auto" VerticalOptions="CenterAndExpand" Padding="10">
+                                <Image Source="vibration_icon.png" HeightRequest="30" WidthRequest="30" Grid.Column="0" />
+                                <Label Text="Vibration Sensors" FontSize="18" VerticalOptions="Center" Grid.Column="1" />
+                                <Switch x:Name="VibrationAlarmSwitch" Grid.Column="2" HorizontalOptions="End" />
+                                <Button Text="Configure" WidthRequest="90" Clicked="OnConfigureVibration" 
+                                        BackgroundColor="{StaticResource ButtonColor}"
+                                        TextColor="White"
+                                        CornerRadius="8" Padding="5" Grid.Column="3" />
+                            </Grid>
+                        </Frame>
+
+                        <!-- Water Leak Sensors -->
+                        <Frame BackgroundColor="{StaticResource SecondaryBackgroundColor}" Padding="10" CornerRadius="8">
+                            <Grid ColumnDefinitions="Auto,*,Auto,Auto" VerticalOptions="CenterAndExpand" Padding="10">
+                                <Image Source="water_icon.png" HeightRequest="30" WidthRequest="30" Grid.Column="0" />
+                                <Label Text="Water Leak Sensors" FontSize="18" VerticalOptions="Center" Grid.Column="1" />
+                                <Switch x:Name="WaterLeakAlarmSwitch" Grid.Column="2" HorizontalOptions="End" />
+                                <Button Text="Configure" WidthRequest="90" Clicked="OnConfigureWaterLeak" 
+                                        BackgroundColor="{StaticResource ButtonColor}"
+                                        TextColor="White"
+                                        CornerRadius="8" Padding="5" Grid.Column="3" />
+                            </Grid>
+                        </Frame>
+
+                        <!-- Lights -->
+                        <Frame BackgroundColor="{StaticResource SecondaryBackgroundColor}" Padding="10" CornerRadius="8">
+                            <Grid ColumnDefinitions="Auto,*,Auto,Auto" VerticalOptions="CenterAndExpand" Padding="10">
+                                <Image Source="light_icon.png" HeightRequest="30" WidthRequest="30" Grid.Column="0" />
+                                <Label Text="Lights" FontSize="18" VerticalOptions="Center" Grid.Column="1" />
+                                <Switch x:Name="LightsAlarmSwitch" Grid.Column="2" HorizontalOptions="End" />
+                                <Button Text="Configure" WidthRequest="90" Clicked="OnConfigureLights" 
+                                        BackgroundColor="{StaticResource ButtonColor}"
+                                        TextColor="White"
+                                        CornerRadius="8" Padding="5" Grid.Column="3" />
+                            </Grid>
+                        </Frame>
+
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Recent Alerts Section -->
+            <Frame BackgroundColor="{StaticResource BackgroundColor}" Padding="15" CornerRadius="10" Margin="0,0,0,15">
+                <VerticalStackLayout>
+                    <Label Text="Recent Alerts"
+               FontSize="20"
+               FontAttributes="Bold"
+               TextColor="{StaticResource PrimaryColor}" />
+
+                    <!-- Example Alerts List -->
+                    <StackLayout Spacing="10">
+                        <!-- Each alert item -->
+                        <Label Text="• Camera 1 detected motion at 3:15 AM"
+                   FontSize="16"
+                   TextColor="{StaticResource TextPrimaryColor}" />
+
+                        <Label Text="• Temperature sensor recorded high temperature at 2:50 AM"
+                   FontSize="16"
+                   TextColor="{StaticResource TextPrimaryColor}" />
+
+                        <Label Text="• Door sensor detected opening at 1:30 AM"
+                   FontSize="16"
+                   TextColor="{StaticResource TextPrimaryColor}" />
+
+                        <!-- Add more alerts as needed -->
+                    </StackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+
+            <!-- Features Section with Light Background --><!--
+            <Frame BackgroundColor="{StaticResource BackgroundColor}" Padding="15" CornerRadius="10" Margin="0,0,0,15">
+                <VerticalStackLayout>
+                    <Label Text="Features"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource PrimaryColor}" />
+
+                    <Label Text="• Monitor your sleep patterns and cycles" 
+                           FontSize="16"
+                           TextColor="{StaticResource TextPrimaryColor}" />
+
+                    <Label Text="• Access real-time camera views to check sleep environment" 
+                           FontSize="16"
+                           TextColor="{StaticResource TextPrimaryColor}" />
+
+                    <Label Text="• Integrate with various sensors to track sleep quality" 
+                           FontSize="16"
+                           TextColor="{StaticResource TextPrimaryColor}" />
+
+                    <Label Text="• Customize alerts and reminders for optimal sleep schedule" 
+                           FontSize="16"
+                           TextColor="{StaticResource TextPrimaryColor}" />
+                </VerticalStackLayout>
+            </Frame>-->
+
+            <!-- Quick Access Buttons Section -->
+            <Frame BackgroundColor="{StaticResource BackgroundColor}" Padding="15" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Quick Access"
+               FontSize="20"
+               FontAttributes="Bold"
+               TextColor="{StaticResource PrimaryColor}" />
+
+                    <!--<Button Text="View Cameras" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnViewCamerasClicked" />-->
+                    <!--<Button Text="Check Sensors" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnCheckSensorsClicked" />-->
+                    <!--<Button Text="Adjust Light Settings" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnAdjustLightsClicked" />-->
+                    <Button Text="Open Profile" Style="{StaticResource AccentButtonStyle}" Clicked="OnOpenProfileClicked" />
+                </VerticalStackLayout>
+            </Frame>
+
+
+            <!-- Additional Actions Row -->
+            <Grid ColumnSpacing="15" Margin="0,0,0,15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!--<Frame Grid.Column="0" BackgroundColor="{StaticResource BackgroundColor}" Padding="15" CornerRadius="10">
+                    <VerticalStackLayout>
+                        <Label Text="Rate Us!" 
+                               FontSize="20" 
+                               FontAttributes="Bold" 
+                               TextColor="{StaticResource PrimaryColor}" />
+                        <Button Text="Leave a Review" Style="{StaticResource AccentButtonStyle}" />
+                    </VerticalStackLayout>
+                </Frame>-->
+
+                <Frame Grid.Column="1" BackgroundColor="{StaticResource BackgroundColor}" Padding="15" CornerRadius="10">
+                    <VerticalStackLayout>
+                        <Label Text="Check for Updates" 
+                               FontSize="20" 
+                               FontAttributes="Bold" 
+                               TextColor="{StaticResource PrimaryColor}" />
+                        <Button Text="Update Now" Style="{StaticResource AccentButtonStyle}" />
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+
+            <!-- News and Sales Section --><!--
+            <Grid ColumnSpacing="15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                --><!-- Latest News Section --><!--
+                <Frame Grid.Column="0" BackgroundColor="{StaticResource BackgroundColor}" Padding="15" CornerRadius="10">
+                    <VerticalStackLayout>
+                        <Label Text="Latest News"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource PrimaryColor}" />
+
+                        <Label Text="• SleepSure app update brings new features to monitor sleep better!"
+                               FontSize="16"
+                               TextColor="{StaticResource TextPrimaryColor}" 
+                               Margin="0,5,0,0"/>
+
+                        <Label Text="• New sensors integrated for higher accuracy and reliability."
+                               FontSize="16"
+                               TextColor="{StaticResource TextPrimaryColor}" 
+                               Margin="0,5,0,0"/>
+
+                        <Label Text="• Special offer: Get 20% off on premium features until end of the month."
+                               FontSize="16"
+                               TextColor="{StaticResource TextPrimaryColor}" 
+                               Margin="0,5,0,0"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                --><!-- Latest Sales Section --><!--
+                <Frame Grid.Column="1" BackgroundColor="{StaticResource BackgroundColor}" Padding="15" CornerRadius="10">
+                    <VerticalStackLayout>
+                        <Label Text="Latest Sales"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource PrimaryColor}" />
+
+                        <Label Text="Save on premium upgrades and accessories!"
+                               FontSize="16"
+                               TextColor="{StaticResource TextPrimaryColor}" 
+                               Margin="0,10,0,0"/>
+
+                        <Button Text="Explore Sales" Style="{StaticResource PrimaryButtonStyle}" Margin="0,10,0,0"/>
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>-->
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

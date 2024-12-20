@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SleepSure.Page.Login"
+             BackgroundColor="{StaticResource PrimaryBackgroundColor}"
+             Title="Login"
+             Shell.NavBarIsVisible="False">
+
+    <VerticalStackLayout Spacing="30" VerticalOptions="Center" HorizontalOptions="Center" Padding="20">
+
+        <!-- Company Name and Logo -->
+        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+            <Label Text="SleepSure" 
+                   FontSize="36" 
+                   FontAttributes="Bold" 
+                   TextColor="{StaticResource ContentBackgroundColor}"
+                   HorizontalOptions="Center" />
+
+            <Image Source="sleep.png" HeightRequest="180" Aspect="AspectFit" HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+
+        <!-- Login Form -->
+        <Frame BackgroundColor="{StaticResource HighlightColor}" CornerRadius="10" Padding="20" WidthRequest="300">
+            <VerticalStackLayout Spacing="20">
+
+                <Frame BackgroundColor="{StaticResource SecondaryButtonColor}" CornerRadius="5" Padding="0">
+                    <Entry x:Name="EmailEntry" 
+                           Placeholder="Email" 
+                           BackgroundColor="Transparent"
+                           TextColor="{StaticResource PrimaryBackgroundColor}" 
+                           PlaceholderColor="{StaticResource TextColor}" 
+                           FontSize="18" />
+                </Frame>
+
+                <Frame BackgroundColor="{StaticResource SecondaryButtonColor}" CornerRadius="5" Padding="0">
+                    <Entry x:Name="PasswordEntry" 
+                           Placeholder="Password" 
+                           BackgroundColor="Transparent"
+                           TextColor="{StaticResource PrimaryBackgroundColor}" 
+                           PlaceholderColor="{StaticResource TextColor}" 
+                           FontSize="18" 
+                           IsPassword="True"/>
+                </Frame>
+
+                <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
+                    <Button Text="Login" 
+                            WidthRequest="100" 
+                            BackgroundColor="{StaticResource ButtonColor}" 
+                            TextColor="{StaticResource ContentBackgroundColor}" 
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            CornerRadius="8"
+                            Padding="10,5"
+                            Clicked="OnLoginClicked"/>
+
+                    <Button Text="Register" 
+                            WidthRequest="100" 
+                            BackgroundColor="{StaticResource ButtonColor}" 
+                            TextColor="{StaticResource ContentBackgroundColor}" 
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            CornerRadius="8"
+                            Padding="10,5"
+                            Clicked="OnRegisterClicked"/>
+
+                   
+                   
+                    
+                </HorizontalStackLayout>
+                <Button Text="Skip login" 
+                    WidthRequest="100" 
+                    BackgroundColor="{StaticResource SecondaryButtonColor}" 
+                    TextColor="White" 
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    CornerRadius="8"
+                    Padding="10,5"
+                    Clicked="OnSkipLoginClicked"/>
+            </VerticalStackLayout>
+        </Frame>
+
+    </VerticalStackLayout>
+</ContentPage>

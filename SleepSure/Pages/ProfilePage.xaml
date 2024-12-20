@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SleepSure.Page.ProfilePage"
+             NavigationPage.HasNavigationBar="False">
+
+    <!-- Apply a gradient background to the entire page -->
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#E1ECF4" Offset="0.0"/>
+            <!-- Light blue at the top -->
+            <GradientStop Color="#C5D8E8" Offset="1.0"/>
+            <!-- Slightly darker blue at the bottom -->
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <!-- Header Section -->
+            <Frame BackgroundColor="{StaticResource SecondaryColor}" Padding="20" CornerRadius="10">
+                <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+                    <Label Text="Your Profile"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TextColor}"
+                           HorizontalTextAlignment="Center"/>
+                    <Label Text="Manage your account information and settings"
+                           FontSize="16"
+                           TextColor="{StaticResource TextSecondaryColor}"
+                           HorizontalTextAlignment="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Basic Info Section -->
+            <Frame BackgroundColor="{StaticResource BackgroundColor}" Padding="15" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Basic Information" 
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource PrimaryColor}" />
+
+                    <Entry Placeholder="Username" Text="JohnDoe123" FontSize="16" TextColor="{StaticResource PrimaryColor}" />
+                    <Entry Placeholder="Email Address" Text="johndoe@example.com" FontSize="16" TextColor="{StaticResource PrimaryColor}" IsReadOnly="True" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Settings Section -->
+            <Frame BackgroundColor="{StaticResource BackgroundColor}" Padding="15" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Settings"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource PrimaryColor}" />
+
+                    <Button Text="Profile Settings" Style="{StaticResource PrimaryButtonStyle}" />
+                    <Button Text="Privacy Settings" Style="{StaticResource PrimaryButtonStyle}" />
+                    <Button Text="Notification Settings" Style="{StaticResource PrimaryButtonStyle}" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Security Section -->
+            <Frame BackgroundColor="{StaticResource BackgroundColor}" Padding="15" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Security"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource PrimaryColor}" />
+
+                    <Button Text="Change Password" Style="{StaticResource PrimaryButtonStyle}" />
+                    <Button Text="Linked Accounts" Style="{StaticResource PrimaryButtonStyle}" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Preferences Section with Switches -->
+            <Frame BackgroundColor="{StaticResource BackgroundColor}" Padding="15" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Preferences"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource PrimaryColor}" />
+
+                    
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Receive Newsletters" FontSize="16" TextColor="{StaticResource TextPrimaryColor}" VerticalOptions="Center"/>
+                        <Switch IsToggled="False"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Sign Out Button -->
+            <Button Text="Sign Out"
+                    BackgroundColor="#D9534F" 
+                TextColor="White"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    Margin="0,20,0,0"
+                    HorizontalOptions="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

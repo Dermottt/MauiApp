@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SleepSure.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Color Palette -->
+            <Color x:Key="PrimaryBackgroundColor">#2C3E50</Color>
+            <!-- Midnight Blue -->
+            <Color x:Key="HighlightColor">#3A506B</Color>
+
+            <!-- Gradient for HighlightColor -->
+            <LinearGradientBrush x:Key="HighlightColorBrush" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#abbbcf" Offset="0.0" />
+                <GradientStop Color="#99abc2" Offset="1.0" />
+            </LinearGradientBrush>
+
+            <!-- Gradient for HighlightColor2 -->
+            <LinearGradientBrush x:Key="HighlightColorBrush2" StartPoint="0,0" EndPoint="1,1">
+                
+                <GradientStop Color="#5A7395" Offset="0.0" />
+                <GradientStop Color="#8ED081" Offset="1.0" />
+            </LinearGradientBrush>
+
+            <!-- Gradient for HighlightColor2 -->
+            <LinearGradientBrush x:Key="HighlightColorBrush3" StartPoint="0,0" EndPoint="1,1">
+
+                <GradientStop Color="#daf0d5" Offset="0.0" />
+                <GradientStop Color="#caebc3" Offset="1.0" />
+            </LinearGradientBrush>
+
+            <!-- Other Colors -->
+            <Color x:Key="ButtonColor">#8e87a8</Color>
+            <!-- Soft Lavender -->
+            <Color x:Key="SecondaryButtonColor">#A8D0E6</Color>
+            <!-- Pastel Blue -->
+            <Color x:Key="TextColor">black</Color>
+            <!-- Muted Gray -->
+            <Color x:Key="ContentBackgroundColor">#F0F5F9</Color>
+            <!-- Pale Blue -->
+            <Color x:Key="SuccessColor">#8ED081</Color>
+            <!-- Mint Green -->
+            <Color x:Key="WarningColor">#D9B2BA</Color>
+            <!-- Dusty Pink -->
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SleepSure.Page.LightPage"
+             Title="Light Control"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#F0F5F9" Offset="0.0"/>
+            <GradientStop Color="#E1ECF4" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Manage Your Lights"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   TextColor="{StaticResource PrimaryColor}" />
+
+            <!-- Add New Light Section -->
+            <Frame Background="{DynamicResource HighlightColorBrush}" Padding="15" CornerRadius="10" Margin="0,10,0,15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Add New Light" FontSize="20" FontAttributes="Bold" />
+
+                    <Entry x:Name="LightNameEntry"
+                           Placeholder="Light Name"
+                           PlaceholderColor="{StaticResource TextSecondaryColor}"
+                           BackgroundColor="White"
+                           TextColor="{StaticResource PrimaryBackgroundColor}" />
+
+                    <Entry x:Name="LightIPEntry"
+                           Placeholder="Light IP Address"
+                           PlaceholderColor="{StaticResource TextSecondaryColor}"
+                           BackgroundColor="White"
+                           TextColor="{StaticResource PrimaryBackgroundColor}" />
+
+                    <Button Text="Add Light" 
+                            BackgroundColor="{StaticResource AccentColor}" 
+                            TextColor="Black" 
+                            FontAttributes="Bold" 
+                            CornerRadius="8"
+                            Padding="10,5"
+                            Clicked="OnAddLightClicked" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Turn Off All Lights Button -->
+            <Button Text="Turn Off All Lights"
+                    BackgroundColor="#D9534F"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Clicked="OnTurnOffAllLightsClicked" />
+
+            <!-- List of Lights with Brightness Control and Delete Button -->
+            <CollectionView x:Name="LightsCollectionView" Margin="0,20,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="{StaticResource BackgroundColor}" Padding="10" CornerRadius="10" Margin="0,10,0,0">
+                            <VerticalStackLayout Spacing="10">
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label Text="{Binding Name}"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="{StaticResource TextPrimaryColor}" />
+                                    <Label Text="{Binding IpAddress}"
+                                           FontSize="14"
+                                           TextColor="{StaticResource TextSecondaryColor}" />
+
+                                    <Button Text="Delete"
+                                            BackgroundColor="#D9534F" 
+                                            TextColor="White"
+                                            Clicked="OnDeleteLightClicked"
+                                            CommandParameter="{Binding .}" />
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                                    <Label Text="Brightness"
+                                           FontSize="16"
+                                           VerticalOptions="Center"
+                                           TextColor="{StaticResource TextPrimaryColor}" />
+                                    <Slider Minimum="0" Maximum="100"
+                                            Value="{Binding Brightness, Mode=TwoWay}"
+                                            VerticalOptions="Center"
+                                            WidthRequest="200"/>
+                                    <Label Text="{Binding Brightness, StringFormat='{0:F0}%'}"
+                                           FontSize="16"
+                                           VerticalOptions="Center"
+                                           TextColor="{StaticResource TextPrimaryColor}" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

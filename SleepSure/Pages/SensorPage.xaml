@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:SleepSure.Page.SensorPages" 
+       x:Class="SleepSure.Page.SensorPage"
+       Title="Sensors"
+       Shell.NavBarIsVisible="False">
+
+    <!-- TabBar for organizing ShellContent as tabs -->
+    <TabBar>
+        <!-- Motion Sensor Tab -->
+        <ShellContent Title="Motion" Icon="iconmotion.png" 
+                      ContentTemplate="{DataTemplate local:MotionPage}" />
+
+        <!-- Window/Door Sensor Tab -->
+        <ShellContent Title="Window/Door" Icon="iconwindowdoor.png" 
+                      ContentTemplate="{DataTemplate local:windowDoorPage}" />
+
+        <!-- Temperature and Humidity Sensor Tab -->
+        <ShellContent Title="Temp/Humidity" Icon="icontemp.webp" 
+                      ContentTemplate="{DataTemplate local:tempHumidPage}" />
+
+        <!-- Water Leak Sensor Tab -->
+        <ShellContent Title="Water Leak" Icon="iconwater.webp" 
+                      ContentTemplate="{DataTemplate local:waterPage}" />
+
+        <ShellContent Title="Vibrations" Icon="iconvibration.webp" 
+               ContentTemplate="{DataTemplate local:vibrationPage}" />
+    </TabBar>
+</Shell>

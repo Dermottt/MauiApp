@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SleepSure.Page.SensorPages.waterPage"
+             Title="Water Sensors"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#F0F5F9" Offset="0.0"/>
+            <GradientStop Color="#E1ECF4" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Header Section -->
+            <Frame Background="{DynamicResource HighlightColorBrush2}" Padding="15" CornerRadius="10">
+                <VerticalStackLayout>
+                <Label Text="Water Sensors"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       TextColor="{StaticResource ContentBackgroundColor}" />
+                <Label Text="Monitor for water leaks and prevent potential damage"
+                       FontSize="16"
+                       HorizontalTextAlignment="Center"
+                       TextColor="{StaticResource ContentBackgroundColor}" 
+                       Margin="0,5,0,0"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Real-Time Status Overview -->
+            <Frame BackgroundColor="{StaticResource ContentBackgroundColor}" Padding="15" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Real-Time Water Status"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TextColor}" />
+
+                    <!-- Example Water Sensors -->
+                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto">
+                        <Label Text="Kitchen Sink"
+                               FontSize="16"
+                               TextColor="{StaticResource TextColor}"
+                               VerticalOptions="Center" Grid.Row="0" Grid.Column="0"/>
+                        <Label Text="Dry"
+                               FontSize="16"
+                               TextColor="{StaticResource SuccessColor}"
+                               FontAttributes="Bold" Grid.Row="0" Grid.Column="1"/>
+
+                        <Label Text="Bathroom"
+                               FontSize="16"
+                               TextColor="{StaticResource TextColor}"
+                               VerticalOptions="Center" Grid.Row="1" Grid.Column="0"/>
+                        <Label Text="Leak Detected"
+                               FontSize="16"
+                               TextColor="{StaticResource WarningColor}"
+                               FontAttributes="Bold" Grid.Row="1" Grid.Column="1"/>
+
+                        <Label Text="Basement"
+                               FontSize="16"
+                               TextColor="{StaticResource TextColor}"
+                               VerticalOptions="Center" Grid.Row="2" Grid.Column="0"/>
+                        <Label Text="Dry"
+                               FontSize="16"
+                               TextColor="{StaticResource SuccessColor}"
+                               FontAttributes="Bold" Grid.Row="2" Grid.Column="1"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Recent Alerts Section -->
+            <Frame BackgroundColor="{StaticResource ContentBackgroundColor}" Padding="15" CornerRadius="10">
+                <VerticalStackLayout>
+                    <Label Text="Recent Alerts"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TextColor}" />
+
+                    <StackLayout Spacing="5">
+                        <Label Text="• Bathroom - Leak detected at 5:30 PM"
+                               FontSize="14"
+                               TextColor="{StaticResource TextColor}" />
+                        <Label Text="• Kitchen Sink - Dry status checked at 2:10 PM"
+                               FontSize="14"
+                               TextColor="{StaticResource TextColor}" />
+                        <Label Text="• Basement - Dry status checked at 9:00 AM"
+                               FontSize="14"
+                               TextColor="{StaticResource TextColor}" />
+                    </StackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Add New Water Sensor Section -->
+            <Frame Background="{DynamicResource HighlightColorBrush3}" Padding="15" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Add New Water Sensor"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TextColor}" />
+
+                    <Entry x:Name="SensorLocationEntry"
+                           Placeholder="Enter Sensor Location (e.g., Kitchen Sink)"
+                           BackgroundColor="White"
+                           TextColor="{StaticResource TextColor}"
+                           FontSize="16" />
+
+                    <Entry x:Name="SensorIPEntry"
+                           Placeholder="Enter IP Address"
+                           BackgroundColor="White"
+                           TextColor="{StaticResource TextColor}"
+                           FontSize="16" />
+
+                    <Button Text="Add Sensor"
+                            BackgroundColor="{StaticResource ButtonColor}"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="8"
+                            Padding="10,5"
+                            Clicked="OnAddSensorClicked" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Dynamic List of Water Sensors with Delete Option -->
+            <Frame BackgroundColor="{StaticResource ContentBackgroundColor}" Padding="15" CornerRadius="10">
+                <VerticalStackLayout>
+                    <Label Text="Added Sensors"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TextColor}" />
+
+                    <CollectionView x:Name="SensorsCollectionView" ItemsSource="{Binding Sensors}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="{StaticResource BackgroundColor}" Padding="10" CornerRadius="8" Margin="0,5,0,5">
+                                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+                                        <Label Text="{Binding Location}"
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               TextColor="{StaticResource TextColor}" Grid.Column="0" />
+                                        <Label Text="{Binding IPAddress}"
+                                               FontSize="14"
+                                               TextColor="{StaticResource TextSecondaryColor}" Grid.Column="0" Grid.Row="1" />
+                                        <Button Text="Delete" 
+                                                BackgroundColor="{StaticResource WarningColor}"
+                                                TextColor="White"
+                                                CornerRadius="8"
+                                                Padding="5,2"
+                                                CommandParameter="{Binding .}"
+                                                Clicked="OnDeleteSensorClicked"
+                                                HorizontalOptions="End"
+                                                Grid.Column="1" Grid.Row="0"/>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Settings & Notifications Section -->
+            <Frame BackgroundColor="{StaticResource ContentBackgroundColor}" Padding="15" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Settings &amp; Notifications"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource TextColor}" />
+
+                    <!-- Notification Toggle -->
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="Enable Notifications"
+                               FontSize="16"
+                               TextColor="{StaticResource TextColor}"
+                               VerticalOptions="Center" Grid.Column="0"/>
+                        <Switch IsToggled="True"
+                                VerticalOptions="Center" Grid.Column="1"/>
+                    </Grid>
+
+                    <!-- Alert Sensitivity Slider -->
+                    <Grid ColumnDefinitions="Auto,Auto">
+                        <Label Text="Alert Sensitivity"
+                               FontSize="16"
+                               TextColor="{StaticResource TextColor}"
+                               VerticalOptions="Center" Grid.Column="0"/>
+                        <Slider Minimum="1" Maximum="5" Value="3"
+                                VerticalOptions="Center" WidthRequest="200" Grid.Column="1"/>
+                    </Grid>
+                    <Label Text="Adjust the sensitivity for water leak detection."
+                           FontSize="12"
+                           TextColor="{StaticResource TextColor}" />
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
